@@ -1,0 +1,1035 @@
+{
+  "meta": {
+    "as_of": "2026-09-15",
+    "mode": "fallback на правилах (без LLM)"
+  },
+  "part1": [
+    {
+      "id": "M1",
+      "text": "05.03.2026 MS-01 приход OIL-001, 2 канистры по 5 л, НК-345",
+      "result": {
+        "date": "2026-03-05",
+        "sku": "OIL-001",
+        "location": "MS-01",
+        "operation": "receipt",
+        "qty": 10.0,
+        "unit": "л",
+        "batch": null,
+        "doc_no": "НК-345"
+      }
+    },
+    {
+      "id": "M2",
+      "text": "1 марта 2026 MS-01 расход oil 001 — 450 мл, B-OIL-001-012",
+      "result": {
+        "date": "2026-03-01",
+        "sku": "OIL-001",
+        "location": "MS-01",
+        "operation": "consume",
+        "qty": 0.45,
+        "unit": "л",
+        "batch": "B-OIL-001-012",
+        "doc_no": null
+      }
+    },
+    {
+      "id": "M3",
+      "text": "03/06/26 Сочи списание SCRB-020 1,2 кг, истёк срок",
+      "result": {
+        "date": "2026-03-06",
+        "sku": "SCRB-020",
+        "location": "Сочи",
+        "operation": "writeoff",
+        "qty": 1.2,
+        "unit": "кг",
+        "batch": null,
+        "doc_no": null
+      }
+    },
+    {
+      "id": "M4",
+      "text": "07.03.26 ms-02 WRAP 030 расход 3,5кг, парт.B-WRAP-030-004",
+      "result": {
+        "date": "2026-03-07",
+        "sku": "WRAP-030",
+        "location": "MS-02",
+        "operation": "consume",
+        "qty": 3.5,
+        "unit": "кг",
+        "batch": "B-WRAP-030-004",
+        "doc_no": null
+      }
+    },
+    {
+      "id": "M5",
+      "text": "Возврат 12 марта 2026 г.: OIL-002, 2 л, брак упаковки",
+      "result": {
+        "date": "2026-03-12",
+        "sku": "OIL-002",
+        "location": null,
+        "operation": "return",
+        "qty": 2.0,
+        "unit": "л",
+        "batch": null,
+        "doc_no": null
+      }
+    },
+    {
+      "id": "M6",
+      "text": "2026-03-08; MS-01; CONS-051; расход; 48 пар",
+      "result": {
+        "date": "2026-03-08",
+        "sku": "CONS-051",
+        "location": "MS-01",
+        "operation": "consume",
+        "qty": 48.0,
+        "unit": "пар",
+        "batch": null,
+        "doc_no": null
+      }
+    },
+    {
+      "id": "M7",
+      "text": "Корректировка 15.03.2026, MS-02, CONS-052: −120 шт",
+      "result": {
+        "date": "2026-03-15",
+        "sku": "CONS-052",
+        "location": "MS-02",
+        "operation": "correction",
+        "qty": -120.0,
+        "unit": "шт",
+        "batch": null,
+        "doc_no": null
+      }
+    },
+    {
+      "id": "M8",
+      "text": "Приход тапочек одноразовых, 4 уп. по 50 пар, Красная Поляна",
+      "result": {
+        "date": null,
+        "sku": "CONS-051",
+        "location": "Красная Поляна",
+        "operation": "receipt",
+        "qty": 200.0,
+        "unit": "пар",
+        "batch": null,
+        "doc_no": null
+      }
+    }
+  ],
+  "part2": [
+    {
+      "sku": "OIL-001",
+      "avg_daily_consumption": 1.999,
+      "forecast_demand": 59.966,
+      "current_stock": 50.4,
+      "incoming_qty": 20.0,
+      "safety_stock": 26.347,
+      "reorder_point": 39.756,
+      "recommended_qty": 20.0,
+      "estimated_cost": 25181.0,
+      "stockout_date": "2026-10-20",
+      "confidence": 0.84,
+      "explanation": "OIL-001 «Массажное масло базовое (миндаль)», данные на 2026-09-15, горизонт 30 дн. Метод: сглаживание Холта с затухающим трендом (alpha=0.5, beta=0.3, phi=0.9) по 12 нед. истории. Текущий уровень 13.173 л/нед, тренд +0.452 л/нед (затухающий). Прогноз расхода за горизонт 59.966 л (в среднем 1.999 л/день). Страховой запас = 14 дн × 1.882 л/день = 26.347 л. Точка заказа = расход за срок поставки 7 дн (13.409) + страховой запас = 39.756 л. Потребность = прогноз 59.966 + страховой запас 26.347 − остаток 50.4 − в пути 20.0 = 15.913 л. Округление вверх до упаковки 5 и минимальной партии 10: 20.0 л. Стоимость 20.0 × 1259.05 = 25181.0 руб. Уверенность 0.84 (история 1.0, волатильность 0.91, полнота 1.0, горизонт 0.92, режим 1.0).",
+      "unit": "л",
+      "price": 1259.05,
+      "horizon_days": 30,
+      "net_need": 15.913,
+      "stockout_date_on_hand": "2026-10-11",
+      "order_by_date": "2026-10-01",
+      "low_confidence": false,
+      "level_weekly": 13.173,
+      "trend_weekly": 0.452,
+      "level_shift_week": null,
+      "missing_weeks": [],
+      "outlier_weeks": [],
+      "level_shift_policy": "new_level",
+      "confidence_factors": {
+        "history": 1.0,
+        "volatility": 0.91,
+        "completeness": 1.0,
+        "horizon": 0.92,
+        "regime": 1.0
+      },
+      "load_factor": 1.0
+    },
+    {
+      "sku": "OIL-001",
+      "avg_daily_consumption": 2.147,
+      "forecast_demand": 193.234,
+      "current_stock": 50.4,
+      "incoming_qty": 20.0,
+      "safety_stock": 26.347,
+      "reorder_point": 39.756,
+      "recommended_qty": 150.0,
+      "estimated_cost": 188857.5,
+      "stockout_date": "2026-10-20",
+      "confidence": 0.73,
+      "explanation": "OIL-001 «Массажное масло базовое (миндаль)», данные на 2026-09-15, горизонт 90 дн. Метод: сглаживание Холта с затухающим трендом (alpha=0.5, beta=0.3, phi=0.9) по 12 нед. истории. Текущий уровень 13.173 л/нед, тренд +0.452 л/нед (затухающий). Прогноз расхода за горизонт 193.234 л (в среднем 2.147 л/день). Страховой запас = 14 дн × 1.882 л/день = 26.347 л. Точка заказа = расход за срок поставки 7 дн (13.409) + страховой запас = 39.756 л. Потребность = прогноз 193.234 + страховой запас 26.347 − остаток 50.4 − в пути 20.0 = 149.181 л. Округление вверх до упаковки 5 и минимальной партии 10: 150.0 л. Стоимость 150.0 × 1259.05 = 188857.5 руб. Уверенность 0.73 (история 1.0, волатильность 0.91, полнота 1.0, горизонт 0.8, режим 1.0).",
+      "unit": "л",
+      "price": 1259.05,
+      "horizon_days": 90,
+      "net_need": 149.181,
+      "stockout_date_on_hand": "2026-10-11",
+      "order_by_date": "2026-10-01",
+      "low_confidence": false,
+      "level_weekly": 13.173,
+      "trend_weekly": 0.452,
+      "level_shift_week": null,
+      "missing_weeks": [],
+      "outlier_weeks": [],
+      "level_shift_policy": "new_level",
+      "confidence_factors": {
+        "history": 1.0,
+        "volatility": 0.91,
+        "completeness": 1.0,
+        "horizon": 0.8,
+        "regime": 1.0
+      },
+      "load_factor": 1.0
+    },
+    {
+      "sku": "SCRB-020",
+      "avg_daily_consumption": 1.032,
+      "forecast_demand": 30.964,
+      "current_stock": 9.4,
+      "incoming_qty": 0.0,
+      "safety_stock": 14.45,
+      "reorder_point": 24.771,
+      "recommended_qty": 37.0,
+      "estimated_cost": 66211.5,
+      "stockout_date": "2026-09-25",
+      "confidence": 0.35,
+      "explanation": "SCRB-020 «Скраб для тела кофейный», данные на 2026-09-15, горизонт 30 дн. Метод: сглаживание Холта с затухающим трендом (alpha=0.5, beta=0.3, phi=0.9) по 4 нед. истории. С недели 9 расход устойчиво изменился более чем в 1.5 раза — принят как новый уровень спроса, в расчёт взяты только последние 4 нед. Текущий уровень 7.225 кг/нед, тренд +0.0 кг/нед (затухающий). Прогноз расхода за горизонт 30.964 кг (в среднем 1.032 кг/день). Страховой запас = 14 дн × 1.032 кг/день = 14.45 кг. Точка заказа = расход за срок поставки 10 дн (10.321) + страховой запас = 24.771 кг. Потребность = прогноз 30.964 + страховой запас 14.45 − остаток 9.4 − в пути 0.0 = 36.014 кг. Округление вверх до упаковки 1 и минимальной партии 5: 37.0 кг. Стоимость 37.0 × 1789.5 = 66211.5 руб. Уверенность 0.35 (история 0.5, волатильность 0.95, полнота 1.0, горизонт 0.92, режим 0.8); ниже порога — низкая уверенность прогноза.",
+      "unit": "кг",
+      "price": 1789.5,
+      "horizon_days": 30,
+      "net_need": 36.014,
+      "stockout_date_on_hand": "2026-09-25",
+      "order_by_date": "2026-09-15",
+      "low_confidence": true,
+      "level_weekly": 7.225,
+      "trend_weekly": 0.0,
+      "level_shift_week": 9,
+      "missing_weeks": [],
+      "outlier_weeks": [],
+      "level_shift_policy": "new_level",
+      "confidence_factors": {
+        "history": 0.5,
+        "volatility": 0.95,
+        "completeness": 1.0,
+        "horizon": 0.92,
+        "regime": 0.8
+      },
+      "load_factor": 1.0
+    },
+    {
+      "sku": "SCRB-020",
+      "avg_daily_consumption": 1.032,
+      "forecast_demand": 92.893,
+      "current_stock": 9.4,
+      "incoming_qty": 0.0,
+      "safety_stock": 14.45,
+      "reorder_point": 24.771,
+      "recommended_qty": 98.0,
+      "estimated_cost": 175371.0,
+      "stockout_date": "2026-09-25",
+      "confidence": 0.3,
+      "explanation": "SCRB-020 «Скраб для тела кофейный», данные на 2026-09-15, горизонт 90 дн. Метод: сглаживание Холта с затухающим трендом (alpha=0.5, beta=0.3, phi=0.9) по 4 нед. истории. С недели 9 расход устойчиво изменился более чем в 1.5 раза — принят как новый уровень спроса, в расчёт взяты только последние 4 нед. Текущий уровень 7.225 кг/нед, тренд +0.0 кг/нед (затухающий). Прогноз расхода за горизонт 92.893 кг (в среднем 1.032 кг/день). Страховой запас = 14 дн × 1.032 кг/день = 14.45 кг. Точка заказа = расход за срок поставки 10 дн (10.321) + страховой запас = 24.771 кг. Потребность = прогноз 92.893 + страховой запас 14.45 − остаток 9.4 − в пути 0.0 = 97.943 кг. Округление вверх до упаковки 1 и минимальной партии 5: 98.0 кг. Стоимость 98.0 × 1789.5 = 175371.0 руб. Уверенность 0.3 (история 0.5, волатильность 0.95, полнота 1.0, горизонт 0.8, режим 0.8); ниже порога — низкая уверенность прогноза.",
+      "unit": "кг",
+      "price": 1789.5,
+      "horizon_days": 90,
+      "net_need": 97.943,
+      "stockout_date_on_hand": "2026-09-25",
+      "order_by_date": "2026-09-15",
+      "low_confidence": true,
+      "level_weekly": 7.225,
+      "trend_weekly": 0.0,
+      "level_shift_week": 9,
+      "missing_weeks": [],
+      "outlier_weeks": [],
+      "level_shift_policy": "new_level",
+      "confidence_factors": {
+        "history": 0.5,
+        "volatility": 0.95,
+        "completeness": 1.0,
+        "horizon": 0.8,
+        "regime": 0.8
+      },
+      "load_factor": 1.0
+    },
+    {
+      "sku": "WRAP-030",
+      "avg_daily_consumption": 0.971,
+      "forecast_demand": 29.13,
+      "current_stock": 29.6,
+      "incoming_qty": 30.0,
+      "safety_stock": 13.226,
+      "reorder_point": 26.644,
+      "recommended_qty": 0.0,
+      "estimated_cost": 0.0,
+      "stockout_date": "2026-11-15",
+      "confidence": 0.78,
+      "explanation": "WRAP-030 «Альгинатная маска для обёртывания», данные на 2026-09-15, горизонт 30 дн. Метод: сглаживание Холта с затухающим трендом (alpha=0.5, beta=0.3, phi=0.9) по 12 нед. истории. Пропуск данных за неделю 5 заполнен линейной интерполяцией (не нулём). Текущий уровень 6.613 кг/нед, тренд +0.101 кг/нед (затухающий). Прогноз расхода за горизонт 29.13 кг (в среднем 0.971 кг/день). Страховой запас = 14 дн × 0.945 кг/день = 13.226 кг. Точка заказа = расход за срок поставки 14 дн (13.418) + страховой запас = 26.644 кг. Потребность = прогноз 29.13 + страховой запас 13.226 − остаток 29.6 − в пути 30.0 = -17.244 кг. Округление вверх до упаковки 1 и минимальной партии 5: 0.0 кг. Стоимость 0.0 × 2437.0 = 0.0 руб. Уверенность 0.78 (история 1.0, волатильность 0.92, полнота 0.92, горизонт 0.92, режим 1.0).",
+      "unit": "кг",
+      "price": 2437.0,
+      "horizon_days": 30,
+      "net_need": -17.244,
+      "stockout_date_on_hand": "2026-10-16",
+      "order_by_date": "2026-10-19",
+      "low_confidence": false,
+      "level_weekly": 6.613,
+      "trend_weekly": 0.101,
+      "level_shift_week": null,
+      "missing_weeks": [
+        5
+      ],
+      "outlier_weeks": [],
+      "level_shift_policy": "new_level",
+      "confidence_factors": {
+        "history": 1.0,
+        "volatility": 0.92,
+        "completeness": 0.92,
+        "horizon": 0.92,
+        "regime": 1.0
+      },
+      "load_factor": 1.0
+    },
+    {
+      "sku": "WRAP-030",
+      "avg_daily_consumption": 1.004,
+      "forecast_demand": 90.385,
+      "current_stock": 29.6,
+      "incoming_qty": 30.0,
+      "safety_stock": 13.226,
+      "reorder_point": 26.644,
+      "recommended_qty": 45.0,
+      "estimated_cost": 109665.0,
+      "stockout_date": "2026-11-15",
+      "confidence": 0.68,
+      "explanation": "WRAP-030 «Альгинатная маска для обёртывания», данные на 2026-09-15, горизонт 90 дн. Метод: сглаживание Холта с затухающим трендом (alpha=0.5, beta=0.3, phi=0.9) по 12 нед. истории. Пропуск данных за неделю 5 заполнен линейной интерполяцией (не нулём). Текущий уровень 6.613 кг/нед, тренд +0.101 кг/нед (затухающий). Прогноз расхода за горизонт 90.385 кг (в среднем 1.004 кг/день). Страховой запас = 14 дн × 0.945 кг/день = 13.226 кг. Точка заказа = расход за срок поставки 14 дн (13.418) + страховой запас = 26.644 кг. Потребность = прогноз 90.385 + страховой запас 13.226 − остаток 29.6 − в пути 30.0 = 44.011 кг. Округление вверх до упаковки 1 и минимальной партии 5: 45.0 кг. Стоимость 45.0 × 2437.0 = 109665.0 руб. Уверенность 0.68 (история 1.0, волатильность 0.92, полнота 0.92, горизонт 0.8, режим 1.0).",
+      "unit": "кг",
+      "price": 2437.0,
+      "horizon_days": 90,
+      "net_need": 44.011,
+      "stockout_date_on_hand": "2026-10-16",
+      "order_by_date": "2026-10-19",
+      "low_confidence": false,
+      "level_weekly": 6.613,
+      "trend_weekly": 0.101,
+      "level_shift_week": null,
+      "missing_weeks": [
+        5
+      ],
+      "outlier_weeks": [],
+      "level_shift_policy": "new_level",
+      "confidence_factors": {
+        "history": 1.0,
+        "volatility": 0.92,
+        "completeness": 0.92,
+        "horizon": 0.8,
+        "regime": 1.0
+      },
+      "load_factor": 1.0
+    }
+  ],
+  "sensitivity": [
+    {
+      "sku": "SCRB-020",
+      "horizon_days": 30,
+      "variants": {
+        "new_level": {
+          "sku": "SCRB-020",
+          "avg_daily_consumption": 1.032,
+          "forecast_demand": 30.964,
+          "current_stock": 9.4,
+          "incoming_qty": 0.0,
+          "safety_stock": 14.45,
+          "reorder_point": 24.771,
+          "recommended_qty": 37.0,
+          "estimated_cost": 66211.5,
+          "stockout_date": "2026-09-25",
+          "confidence": 0.35,
+          "explanation": "SCRB-020 «Скраб для тела кофейный», данные на 2026-09-15, горизонт 30 дн. Метод: сглаживание Холта с затухающим трендом (alpha=0.5, beta=0.3, phi=0.9) по 4 нед. истории. С недели 9 расход устойчиво изменился более чем в 1.5 раза — принят как новый уровень спроса, в расчёт взяты только последние 4 нед. Текущий уровень 7.225 кг/нед, тренд +0.0 кг/нед (затухающий). Прогноз расхода за горизонт 30.964 кг (в среднем 1.032 кг/день). Страховой запас = 14 дн × 1.032 кг/день = 14.45 кг. Точка заказа = расход за срок поставки 10 дн (10.321) + страховой запас = 24.771 кг. Потребность = прогноз 30.964 + страховой запас 14.45 − остаток 9.4 − в пути 0.0 = 36.014 кг. Округление вверх до упаковки 1 и минимальной партии 5: 37.0 кг. Стоимость 37.0 × 1789.5 = 66211.5 руб. Уверенность 0.35 (история 0.5, волатильность 0.95, полнота 1.0, горизонт 0.92, режим 0.8); ниже порога — низкая уверенность прогноза.",
+          "unit": "кг",
+          "price": 1789.5,
+          "horizon_days": 30,
+          "net_need": 36.014,
+          "stockout_date_on_hand": "2026-09-25",
+          "order_by_date": "2026-09-15",
+          "low_confidence": true,
+          "level_weekly": 7.225,
+          "trend_weekly": 0.0,
+          "level_shift_week": 9,
+          "missing_weeks": [],
+          "outlier_weeks": [],
+          "level_shift_policy": "new_level",
+          "confidence_factors": {
+            "history": 0.5,
+            "volatility": 0.95,
+            "completeness": 1.0,
+            "horizon": 0.92,
+            "regime": 0.8
+          },
+          "load_factor": 1.0
+        },
+        "outlier": {
+          "sku": "SCRB-020",
+          "avg_daily_consumption": 0.446,
+          "forecast_demand": 13.371,
+          "current_stock": 9.4,
+          "incoming_qty": 0.0,
+          "safety_stock": 6.288,
+          "reorder_point": 10.767,
+          "recommended_qty": 11.0,
+          "estimated_cost": 19684.5,
+          "stockout_date": "2026-10-07",
+          "confidence": 0.67,
+          "explanation": "SCRB-020 «Скраб для тела кофейный», данные на 2026-09-15, горизонт 30 дн. Метод: сглаживание Холта с затухающим трендом (alpha=0.5, beta=0.3, phi=0.9) по 12 нед. истории. Сдвиг уровня с недели 9 трактован как выброс: недели 9–12 заменены медианой прежнего уровня. Текущий уровень 3.144 кг/нед, тренд -0.013 кг/нед (затухающий). Прогноз расхода за горизонт 13.371 кг (в среднем 0.446 кг/день). Страховой запас = 14 дн × 0.449 кг/день = 6.288 кг. Точка заказа = расход за срок поставки 10 дн (4.478) + страховой запас = 10.767 кг. Потребность = прогноз 13.371 + страховой запас 6.288 − остаток 9.4 − в пути 0.0 = 10.26 кг. Округление вверх до упаковки 1 и минимальной партии 5: 11.0 кг. Стоимость 11.0 × 1789.5 = 19684.5 руб. Уверенность 0.67 (история 1.0, волатильность 0.9, полнота 1.0, горизонт 0.92, режим 0.8).",
+          "unit": "кг",
+          "price": 1789.5,
+          "horizon_days": 30,
+          "net_need": 10.26,
+          "stockout_date_on_hand": "2026-10-07",
+          "order_by_date": "2026-09-15",
+          "low_confidence": false,
+          "level_weekly": 3.144,
+          "trend_weekly": -0.013,
+          "level_shift_week": 9,
+          "missing_weeks": [],
+          "outlier_weeks": [
+            9,
+            10,
+            11,
+            12
+          ],
+          "level_shift_policy": "outlier",
+          "confidence_factors": {
+            "history": 1.0,
+            "volatility": 0.9,
+            "completeness": 1.0,
+            "horizon": 0.92,
+            "regime": 0.8
+          },
+          "load_factor": 1.0
+        },
+        "none": {
+          "sku": "SCRB-020",
+          "avg_daily_consumption": 1.249,
+          "forecast_demand": 37.47,
+          "current_stock": 9.4,
+          "incoming_qty": 0.0,
+          "safety_stock": 15.336,
+          "reorder_point": 26.89,
+          "recommended_qty": 44.0,
+          "estimated_cost": 78738.0,
+          "stockout_date": "2026-09-24",
+          "confidence": 0.5,
+          "explanation": "SCRB-020 «Скраб для тела кофейный», данные на 2026-09-15, горизонт 30 дн. Метод: сглаживание Холта с затухающим трендом (alpha=0.5, beta=0.3, phi=0.9) по 12 нед. истории. Текущий уровень 7.668 кг/нед, тренд +0.593 кг/нед (затухающий). Прогноз расхода за горизонт 37.47 кг (в среднем 1.249 кг/день). Страховой запас = 14 дн × 1.095 кг/день = 15.336 кг. Точка заказа = расход за срок поставки 10 дн (11.554) + страховой запас = 26.89 кг. Потребность = прогноз 37.47 + страховой запас 15.336 − остаток 9.4 − в пути 0.0 = 43.407 кг. Округление вверх до упаковки 1 и минимальной партии 5: 44.0 кг. Стоимость 44.0 × 1789.5 = 78738.0 руб. Уверенность 0.5 (история 1.0, волатильность 0.54, полнота 1.0, горизонт 0.92, режим 1.0); ниже порога — низкая уверенность прогноза.",
+          "unit": "кг",
+          "price": 1789.5,
+          "horizon_days": 30,
+          "net_need": 43.407,
+          "stockout_date_on_hand": "2026-09-24",
+          "order_by_date": "2026-09-15",
+          "low_confidence": true,
+          "level_weekly": 7.668,
+          "trend_weekly": 0.593,
+          "level_shift_week": null,
+          "missing_weeks": [],
+          "outlier_weeks": [],
+          "level_shift_policy": "none",
+          "confidence_factors": {
+            "history": 1.0,
+            "volatility": 0.54,
+            "completeness": 1.0,
+            "horizon": 0.92,
+            "regime": 1.0
+          },
+          "load_factor": 1.0
+        }
+      }
+    },
+    {
+      "sku": "SCRB-020",
+      "horizon_days": 90,
+      "variants": {
+        "new_level": {
+          "sku": "SCRB-020",
+          "avg_daily_consumption": 1.032,
+          "forecast_demand": 92.893,
+          "current_stock": 9.4,
+          "incoming_qty": 0.0,
+          "safety_stock": 14.45,
+          "reorder_point": 24.771,
+          "recommended_qty": 98.0,
+          "estimated_cost": 175371.0,
+          "stockout_date": "2026-09-25",
+          "confidence": 0.3,
+          "explanation": "SCRB-020 «Скраб для тела кофейный», данные на 2026-09-15, горизонт 90 дн. Метод: сглаживание Холта с затухающим трендом (alpha=0.5, beta=0.3, phi=0.9) по 4 нед. истории. С недели 9 расход устойчиво изменился более чем в 1.5 раза — принят как новый уровень спроса, в расчёт взяты только последние 4 нед. Текущий уровень 7.225 кг/нед, тренд +0.0 кг/нед (затухающий). Прогноз расхода за горизонт 92.893 кг (в среднем 1.032 кг/день). Страховой запас = 14 дн × 1.032 кг/день = 14.45 кг. Точка заказа = расход за срок поставки 10 дн (10.321) + страховой запас = 24.771 кг. Потребность = прогноз 92.893 + страховой запас 14.45 − остаток 9.4 − в пути 0.0 = 97.943 кг. Округление вверх до упаковки 1 и минимальной партии 5: 98.0 кг. Стоимость 98.0 × 1789.5 = 175371.0 руб. Уверенность 0.3 (история 0.5, волатильность 0.95, полнота 1.0, горизонт 0.8, режим 0.8); ниже порога — низкая уверенность прогноза.",
+          "unit": "кг",
+          "price": 1789.5,
+          "horizon_days": 90,
+          "net_need": 97.943,
+          "stockout_date_on_hand": "2026-09-25",
+          "order_by_date": "2026-09-15",
+          "low_confidence": true,
+          "level_weekly": 7.225,
+          "trend_weekly": 0.0,
+          "level_shift_week": 9,
+          "missing_weeks": [],
+          "outlier_weeks": [],
+          "level_shift_policy": "new_level",
+          "confidence_factors": {
+            "history": 0.5,
+            "volatility": 0.95,
+            "completeness": 1.0,
+            "horizon": 0.8,
+            "regime": 0.8
+          },
+          "load_factor": 1.0
+        },
+        "outlier": {
+          "sku": "SCRB-020",
+          "avg_daily_consumption": 0.441,
+          "forecast_demand": 39.72,
+          "current_stock": 9.4,
+          "incoming_qty": 0.0,
+          "safety_stock": 6.288,
+          "reorder_point": 10.767,
+          "recommended_qty": 37.0,
+          "estimated_cost": 66211.5,
+          "stockout_date": "2026-10-07",
+          "confidence": 0.58,
+          "explanation": "SCRB-020 «Скраб для тела кофейный», данные на 2026-09-15, горизонт 90 дн. Метод: сглаживание Холта с затухающим трендом (alpha=0.5, beta=0.3, phi=0.9) по 12 нед. истории. Сдвиг уровня с недели 9 трактован как выброс: недели 9–12 заменены медианой прежнего уровня. Текущий уровень 3.144 кг/нед, тренд -0.013 кг/нед (затухающий). Прогноз расхода за горизонт 39.72 кг (в среднем 0.441 кг/день). Страховой запас = 14 дн × 0.449 кг/день = 6.288 кг. Точка заказа = расход за срок поставки 10 дн (4.478) + страховой запас = 10.767 кг. Потребность = прогноз 39.72 + страховой запас 6.288 − остаток 9.4 − в пути 0.0 = 36.608 кг. Округление вверх до упаковки 1 и минимальной партии 5: 37.0 кг. Стоимость 37.0 × 1789.5 = 66211.5 руб. Уверенность 0.58 (история 1.0, волатильность 0.9, полнота 1.0, горизонт 0.8, режим 0.8); ниже порога — низкая уверенность прогноза.",
+          "unit": "кг",
+          "price": 1789.5,
+          "horizon_days": 90,
+          "net_need": 36.608,
+          "stockout_date_on_hand": "2026-10-07",
+          "order_by_date": "2026-09-15",
+          "low_confidence": true,
+          "level_weekly": 3.144,
+          "trend_weekly": -0.013,
+          "level_shift_week": 9,
+          "missing_weeks": [],
+          "outlier_weeks": [
+            9,
+            10,
+            11,
+            12
+          ],
+          "level_shift_policy": "outlier",
+          "confidence_factors": {
+            "history": 1.0,
+            "volatility": 0.9,
+            "completeness": 1.0,
+            "horizon": 0.8,
+            "regime": 0.8
+          },
+          "load_factor": 1.0
+        },
+        "none": {
+          "sku": "SCRB-020",
+          "avg_daily_consumption": 1.444,
+          "forecast_demand": 129.918,
+          "current_stock": 9.4,
+          "incoming_qty": 0.0,
+          "safety_stock": 15.336,
+          "reorder_point": 26.89,
+          "recommended_qty": 136.0,
+          "estimated_cost": 243372.0,
+          "stockout_date": "2026-09-24",
+          "confidence": 0.44,
+          "explanation": "SCRB-020 «Скраб для тела кофейный», данные на 2026-09-15, горизонт 90 дн. Метод: сглаживание Холта с затухающим трендом (alpha=0.5, beta=0.3, phi=0.9) по 12 нед. истории. Текущий уровень 7.668 кг/нед, тренд +0.593 кг/нед (затухающий). Прогноз расхода за горизонт 129.918 кг (в среднем 1.444 кг/день). Страховой запас = 14 дн × 1.095 кг/день = 15.336 кг. Точка заказа = расход за срок поставки 10 дн (11.554) + страховой запас = 26.89 кг. Потребность = прогноз 129.918 + страховой запас 15.336 − остаток 9.4 − в пути 0.0 = 135.854 кг. Округление вверх до упаковки 1 и минимальной партии 5: 136.0 кг. Стоимость 136.0 × 1789.5 = 243372.0 руб. Уверенность 0.44 (история 1.0, волатильность 0.54, полнота 1.0, горизонт 0.8, режим 1.0); ниже порога — низкая уверенность прогноза.",
+          "unit": "кг",
+          "price": 1789.5,
+          "horizon_days": 90,
+          "net_need": 135.854,
+          "stockout_date_on_hand": "2026-09-24",
+          "order_by_date": "2026-09-15",
+          "low_confidence": true,
+          "level_weekly": 7.668,
+          "trend_weekly": 0.593,
+          "level_shift_week": null,
+          "missing_weeks": [],
+          "outlier_weeks": [],
+          "level_shift_policy": "none",
+          "confidence_factors": {
+            "history": 1.0,
+            "volatility": 0.54,
+            "completeness": 1.0,
+            "horizon": 0.8,
+            "regime": 1.0
+          },
+          "load_factor": 1.0
+        }
+      }
+    }
+  ],
+  "part3": [
+    {
+      "question": "Сколько масла закупить на три месяца и сколько это будет стоить?",
+      "parsed": {
+        "intent": "unknown",
+        "sku": null,
+        "sku_candidates": [
+          "OIL-001",
+          "OIL-002"
+        ],
+        "ambiguous_sku": true,
+        "location": null,
+        "period_days": 90,
+        "period_mode": "explicit",
+        "budget_limit": null,
+        "load_factor": null,
+        "intent_scores": {
+          "forecast_purchase": 3.0,
+          "budget": 1.0
+        },
+        "intent_share": 0.75,
+        "intent_margin": 0.5,
+        "source": "rules",
+        "missing": [
+          "sku"
+        ],
+        "reason": "ambiguous_sku",
+        "candidate_intent": "forecast_purchase",
+        "question": "Сколько масла закупить на три месяца и сколько это будет стоить?",
+        "needs_clarification": true,
+        "clarification_reason": "ambiguous_sku",
+        "low_forecast_confidence": false
+      },
+      "confidence": 0.3,
+      "text": "Требуется уточнение: какое именно масло — OIL-001 «Массажное масло базовое (миндаль)» или OIL-002 «Массажное масло ароматическое (лаванда)»?"
+    },
+    {
+      "question": "Что нужно заказать в ближайшие 14 дней?",
+      "parsed": {
+        "intent": "reorder_list",
+        "sku": null,
+        "sku_candidates": [],
+        "ambiguous_sku": false,
+        "location": null,
+        "period_days": 14,
+        "period_mode": "explicit",
+        "budget_limit": null,
+        "load_factor": null,
+        "intent_scores": {
+          "forecast_purchase": 1.0,
+          "reorder_list": 4.0
+        },
+        "intent_share": 0.8,
+        "intent_margin": 0.6,
+        "source": "rules",
+        "missing": [],
+        "reason": null,
+        "question": "Что нужно заказать в ближайшие 14 дней?",
+        "needs_clarification": false,
+        "clarification_reason": null,
+        "low_forecast_confidence": true,
+        "answer_source": "template"
+      },
+      "confidence": 0.35,
+      "text": "В ближайшие 14 дн. нужно заказать: SCRB-020: заказать до 2026-09-15 (точка заказа 24.771 кг, остаток 9.4 + в пути 0), рекомендуемый объём на 30 дн. 37 кг на 66 211.50 руб. Низкая уверенность прогноза: 0.35 ниже порога 0.6 (подтвердите, что новый уровень спроса сохранится). Позже: OIL-001 (точка заказа 2026-10-01), WRAP-030 (точка заказа 2026-10-19). Позиции без истории расхода (OIL-002, CONS-051, CONS-052) в расчёт не вошли."
+    },
+    {
+      "question": "Какой бюджет закупок на квартал?",
+      "parsed": {
+        "intent": "budget",
+        "sku": null,
+        "sku_candidates": [],
+        "ambiguous_sku": false,
+        "location": null,
+        "period_days": 90,
+        "period_mode": "explicit",
+        "budget_limit": null,
+        "load_factor": null,
+        "intent_scores": {
+          "forecast_purchase": 1.5,
+          "budget": 3.0
+        },
+        "intent_share": 0.67,
+        "intent_margin": 0.33,
+        "source": "rules",
+        "missing": [],
+        "reason": null,
+        "question": "Какой бюджет закупок на квартал?",
+        "needs_clarification": false,
+        "clarification_reason": null,
+        "low_forecast_confidence": true,
+        "answer_source": "template"
+      },
+      "confidence": 0.3,
+      "text": "Бюджет закупок на 90 дн.: 473 893.50 руб. Состав: OIL-001: 150 л × 1 259.05 руб. = 188 857.50 руб. (уверенность 0.73); SCRB-020: 98 кг × 1 789.50 руб. = 175 371.00 руб. (уверенность 0.3); WRAP-030: 45 кг × 2 437.00 руб. = 109 665.00 руб. (уверенность 0.68). По SCRB-020 низкая уверенность прогноза (ниже порога 0.6). Позиции без истории расхода (OIL-002, CONS-051, CONS-052) в расчёт не вошли."
+    },
+    {
+      "question": "Что закончится до следующей поставки в Сочи?",
+      "parsed": {
+        "intent": "deficit_risk",
+        "sku": null,
+        "sku_candidates": [],
+        "ambiguous_sku": false,
+        "location": "Сочи",
+        "period_days": null,
+        "period_mode": "lead_time",
+        "budget_limit": null,
+        "load_factor": null,
+        "intent_scores": {
+          "deficit_risk": 7.5
+        },
+        "intent_share": 1.0,
+        "intent_margin": 1.0,
+        "source": "rules",
+        "missing": [],
+        "reason": null,
+        "question": "Что закончится до следующей поставки в Сочи?",
+        "needs_clarification": true,
+        "clarification_reason": "location_not_in_data",
+        "low_forecast_confidence": true,
+        "answer_source": "template"
+      },
+      "confidence": 0.32,
+      "text": "По филиалу «Сочи» данных нет: остатки и расход есть только по сети в целом. Требуется уточнение: подходят ли показатели по всей сети или нужны данные филиала? Ниже — показатели по всей сети. Риск дефицита до следующей поставки (срок поставки каждой позиции). Закончится даже с учётом товара в пути: SCRB-020 (остаток 9.4 кг, в пути 0, расход 1.032 кг/день, закончится 2026-09-25, срок поставки 10 дн.). По SCRB-020 низкая уверенность прогноза (ниже порога 0.6). Позиции без истории расхода (OIL-002, CONS-051, CONS-052) в расчёт не вошли."
+    },
+    {
+      "question": "Какие партии сгорят в этом месяце?",
+      "parsed": {
+        "intent": "expiry_risk",
+        "sku": null,
+        "sku_candidates": [],
+        "ambiguous_sku": false,
+        "location": null,
+        "period_days": 15,
+        "period_mode": "month_end",
+        "budget_limit": null,
+        "load_factor": null,
+        "intent_scores": {
+          "expiry_risk": 3.0
+        },
+        "intent_share": 1.0,
+        "intent_margin": 1.0,
+        "source": "rules",
+        "missing": [],
+        "reason": null,
+        "question": "Какие партии сгорят в этом месяце?",
+        "needs_clarification": false,
+        "clarification_reason": null,
+        "low_forecast_confidence": true,
+        "answer_source": "template"
+      },
+      "confidence": 0.5,
+      "text": "Не могу определить, какие партии сгорят в ближайшие 15 дн. (до конца месяца): в переданных данных нет сроков годности и остатков по партиям, только общий остаток по позициям. Чтобы посчитать риск списания, нужна выгрузка партий с датами истечения срока."
+    },
+    {
+      "question": "Насколько подорожало ароматическое масло у поставщика?",
+      "parsed": {
+        "intent": "price_dynamics",
+        "sku": "OIL-002",
+        "sku_candidates": [
+          "OIL-002"
+        ],
+        "ambiguous_sku": false,
+        "location": null,
+        "period_days": null,
+        "period_mode": null,
+        "budget_limit": null,
+        "load_factor": null,
+        "intent_scores": {
+          "forecast_purchase": 0.5,
+          "price_dynamics": 3.0
+        },
+        "intent_share": 0.86,
+        "intent_margin": 0.71,
+        "source": "rules",
+        "missing": [],
+        "reason": null,
+        "question": "Насколько подорожало ароматическое масло у поставщика?",
+        "needs_clarification": false,
+        "clarification_reason": null,
+        "low_forecast_confidence": true,
+        "answer_source": "template"
+      },
+      "confidence": 0.5,
+      "text": "По OIL-002 «Массажное масло ароматическое (лаванда)» в справочнике есть только текущая цена 3 223.40 руб. за л; истории цен поставщика в данных нет, поэтому изменение цены посчитать нельзя. Нужна история закупочных цен."
+    },
+    {
+      "question": "Сколько альгинатной маски осталось в Красной Поляне?",
+      "parsed": {
+        "intent": "deficit_risk",
+        "sku": "WRAP-030",
+        "sku_candidates": [
+          "WRAP-030"
+        ],
+        "ambiguous_sku": false,
+        "location": "Красная Поляна",
+        "period_days": null,
+        "period_mode": null,
+        "budget_limit": null,
+        "load_factor": null,
+        "intent_scores": {
+          "forecast_purchase": 0.5,
+          "deficit_risk": 2.5
+        },
+        "intent_share": 0.83,
+        "intent_margin": 0.67,
+        "source": "rules",
+        "missing": [],
+        "reason": null,
+        "question": "Сколько альгинатной маски осталось в Красной Поляне?",
+        "needs_clarification": true,
+        "clarification_reason": "location_not_in_data",
+        "low_forecast_confidence": false,
+        "answer_source": "template"
+      },
+      "confidence": 0.7,
+      "text": "По филиалу «Красная Поляна» данных нет: остатки и расход есть только по сети в целом. Требуется уточнение: подходят ли показатели по всей сети или нужны данные филиала? Ниже — показатели по всей сети. WRAP-030 «Альгинатная маска для обёртывания»: остаток 29.6 кг, в пути 30 кг. При текущем расходе 0.971 кг/день остатка хватит до 2026-10-16, с учётом поставки в пути — до 2026-11-15. Уверенность прогноза 0.78."
+    },
+    {
+      "question": "Посчитай закупку скраба на полгода при лимите 200 тысяч",
+      "parsed": {
+        "intent": "forecast_purchase",
+        "sku": "SCRB-020",
+        "sku_candidates": [
+          "SCRB-020"
+        ],
+        "ambiguous_sku": false,
+        "location": null,
+        "period_days": 180,
+        "period_mode": "explicit",
+        "budget_limit": 200000.0,
+        "load_factor": null,
+        "intent_scores": {
+          "forecast_purchase": 2.0
+        },
+        "intent_share": 1.0,
+        "intent_margin": 1.0,
+        "source": "rules",
+        "missing": [],
+        "reason": null,
+        "question": "Посчитай закупку скраба на полгода при лимите 200 тысяч",
+        "needs_clarification": false,
+        "clarification_reason": null,
+        "low_forecast_confidence": true,
+        "answer_source": "template"
+      },
+      "confidence": 0.25,
+      "text": "SCRB-020: на 180 дн. прогноз расхода 185.786 кг, остаток 9.4 кг, в пути 0 кг, страховой запас 14.45 кг. Рекомендуемая закупка 191 кг на сумму 341 794.50 руб. (цена 1 789.50 руб. за кг). Превышает лимит 200 000.00 руб. на 141 794.50 руб.; в лимит помещается 111 кг на 198 634.50 руб. Расчёт: SCRB-020 «Скраб для тела кофейный», данные на 2026-09-15, горизонт 180 дн. Метод: сглаживание Холта с затухающим трендом (alpha=0.5, beta=0.3, phi=0.9) по 4 нед. истории. С недели 9 расход устойчиво изменился более чем в 1.5 раза — принят как новый уровень спроса, в расчёт взяты только последние 4 нед. Текущий уровень 7.225 кг/нед, тренд +0.0 кг/нед (затухающий). Прогноз расхода за горизонт 185.786 кг (в среднем 1.032 кг/день). Страховой запас = 14 дн × 1.032 кг/день = 14.45 кг. Точка заказа = расход за срок поставки 10 дн (10.321) + страховой запас = 24.771 кг. Потребность = прогноз 185.786 + страховой запас 14.45 − остаток 9.4 − в пути 0.0 = 190.836 кг. Округление вверх до упаковки 1 и минимальной партии 5: 191.0 кг. Стоимость 191.0 × 1789.5 = 341794.5 руб. Уверенность 0.25 (история 0.5, волатильность 0.95, полнота 1.0, горизонт 0.67, режим 0.8); ниже порога — низкая уверенность прогноза. Низкая уверенность прогноза: 0.25 ниже порога 0.6 (подтвердите, что новый уровень спроса сохранится)."
+    },
+    {
+      "question": "Почему план закупок вырос по сравнению с прошлым кварталом?",
+      "parsed": {
+        "intent": "unknown",
+        "sku": null,
+        "sku_candidates": [],
+        "ambiguous_sku": false,
+        "location": null,
+        "period_days": 90,
+        "period_mode": "explicit",
+        "budget_limit": null,
+        "load_factor": null,
+        "intent_scores": {
+          "forecast_purchase": 1.5,
+          "out_of_scope": 3.0
+        },
+        "intent_share": 0.67,
+        "intent_margin": 0.33,
+        "source": "rules",
+        "missing": [],
+        "reason": "out_of_scope",
+        "question": "Почему план закупок вырос по сравнению с прошлым кварталом?",
+        "needs_clarification": true,
+        "clarification_reason": "out_of_scope",
+        "low_forecast_confidence": false
+      },
+      "confidence": 0.3,
+      "text": "Требуется уточнение. В данных нет сохранённых планов прошлых периодов, сравнить с ними нельзя. Могу показать, из чего складывается текущий план по конкретной позиции (уровень спроса, тренд, страховой запас) — укажите позицию и период."
+    },
+    {
+      "question": "Сколько стоит закупить всё, что в риске дефицита?",
+      "parsed": {
+        "intent": "deficit_risk",
+        "sku": null,
+        "sku_candidates": [],
+        "ambiguous_sku": false,
+        "location": null,
+        "period_days": null,
+        "period_mode": null,
+        "budget_limit": null,
+        "load_factor": null,
+        "intent_scores": {
+          "forecast_purchase": 2.5,
+          "budget": 0.5,
+          "deficit_risk": 5.0
+        },
+        "intent_share": 0.62,
+        "intent_margin": 0.31,
+        "source": "rules",
+        "missing": [],
+        "reason": null,
+        "question": "Сколько стоит закупить всё, что в риске дефицита?",
+        "needs_clarification": false,
+        "clarification_reason": null,
+        "low_forecast_confidence": true,
+        "answer_source": "template"
+      },
+      "confidence": 0.35,
+      "text": "Риск дефицита в ближайшие 30 дн. Закончится даже с учётом товара в пути: SCRB-020 (остаток 9.4 кг, в пути 0, расход 1.032 кг/день, закончится 2026-09-25, срок поставки 10 дн.). Закончится текущий остаток, если товар в пути не придёт вовремя: OIL-001 (остаток 50.4 л до 2026-10-11, в пути 20 л). Закупка позиций в риске на 30 дн.: SCRB-020 37 кг = 66 211.50 руб.; OIL-001 20 л = 25 181.00 руб.; итого 91 392.50 руб. По SCRB-020 низкая уверенность прогноза (ниже порога 0.6). Позиции без истории расхода (OIL-002, CONS-051, CONS-052) в расчёт не вошли."
+    },
+    {
+      "question": "Сколько масла уйдёт за месяц, если загрузка вырастет на 20%?",
+      "parsed": {
+        "intent": "unknown",
+        "sku": null,
+        "sku_candidates": [
+          "OIL-001",
+          "OIL-002"
+        ],
+        "ambiguous_sku": true,
+        "location": null,
+        "period_days": 30,
+        "period_mode": "explicit",
+        "budget_limit": null,
+        "load_factor": 1.2,
+        "intent_scores": {
+          "forecast_purchase": 3.5
+        },
+        "intent_share": 1.0,
+        "intent_margin": 1.0,
+        "source": "rules",
+        "missing": [
+          "sku"
+        ],
+        "reason": "ambiguous_sku",
+        "candidate_intent": "forecast_purchase",
+        "question": "Сколько масла уйдёт за месяц, если загрузка вырастет на 20%?",
+        "needs_clarification": true,
+        "clarification_reason": "ambiguous_sku",
+        "low_forecast_confidence": false
+      },
+      "confidence": 0.3,
+      "text": "Требуется уточнение: какое именно масло — OIL-001 «Массажное масло базовое (миндаль)» или OIL-002 «Массажное масло ароматическое (лаванда)»?"
+    },
+    {
+      "question": "Заказать масло",
+      "parsed": {
+        "intent": "unknown",
+        "sku": null,
+        "sku_candidates": [
+          "OIL-001",
+          "OIL-002"
+        ],
+        "ambiguous_sku": true,
+        "location": null,
+        "period_days": null,
+        "period_mode": null,
+        "budget_limit": null,
+        "load_factor": null,
+        "intent_scores": {
+          "forecast_purchase": 1.0
+        },
+        "intent_share": 1.0,
+        "intent_margin": 1.0,
+        "source": "rules",
+        "missing": [
+          "sku",
+          "period_days"
+        ],
+        "reason": "ambiguous_sku",
+        "candidate_intent": "forecast_purchase",
+        "question": "Заказать масло",
+        "needs_clarification": true,
+        "clarification_reason": "ambiguous_sku",
+        "low_forecast_confidence": false
+      },
+      "confidence": 0.3,
+      "text": "Требуется уточнение: какое именно масло — OIL-001 «Массажное масло базовое (миндаль)» или OIL-002 «Массажное масло ароматическое (лаванда)»? На какой период (например, месяц, квартал, 90 дней)?"
+    },
+    {
+      "question": "Сколько это будет стоить?",
+      "parsed": {
+        "intent": "unknown",
+        "sku": null,
+        "sku_candidates": [],
+        "ambiguous_sku": false,
+        "location": null,
+        "period_days": null,
+        "period_mode": null,
+        "budget_limit": null,
+        "load_factor": null,
+        "intent_scores": {
+          "forecast_purchase": 1.5,
+          "budget": 1.0
+        },
+        "intent_share": 0.6,
+        "intent_margin": 0.2,
+        "source": "rules",
+        "missing": [],
+        "reason": "ambiguous_intent",
+        "candidate_intent": "forecast_purchase",
+        "question": "Сколько это будет стоить?",
+        "needs_clarification": true,
+        "clarification_reason": "ambiguous_intent",
+        "low_forecast_confidence": false
+      },
+      "confidence": 0.3,
+      "text": "Требуется уточнение: вопрос можно понять по-разному — закупка конкретной позиции или общий бюджет закупок. Что именно посчитать? Укажите также позицию и период."
+    },
+    {
+      "question": "Когда привезут заказ от поставщика?",
+      "parsed": {
+        "intent": "unknown",
+        "sku": null,
+        "sku_candidates": [],
+        "ambiguous_sku": false,
+        "location": null,
+        "period_days": null,
+        "period_mode": null,
+        "budget_limit": null,
+        "load_factor": null,
+        "intent_scores": {
+          "out_of_scope": 3.0
+        },
+        "intent_share": 1.0,
+        "intent_margin": 1.0,
+        "source": "rules",
+        "missing": [],
+        "reason": "out_of_scope",
+        "question": "Когда привезут заказ от поставщика?",
+        "needs_clarification": true,
+        "clarification_reason": "out_of_scope",
+        "low_forecast_confidence": false
+      },
+      "confidence": 0.3,
+      "text": "Требуется уточнение. В данных нет дат поставок по заказам, есть только объём в пути (OIL-001: 20 л, WRAP-030: 30 кг). Уточните номер заказа или поставщика — дату доставки помощник не придумывает."
+    },
+    {
+      "question": "Какая погода в Сочи на выходных?",
+      "parsed": {
+        "intent": "unknown",
+        "sku": null,
+        "sku_candidates": [],
+        "ambiguous_sku": false,
+        "location": "Сочи",
+        "period_days": null,
+        "period_mode": null,
+        "budget_limit": null,
+        "load_factor": null,
+        "intent_scores": {
+          "out_of_scope": 3.0
+        },
+        "intent_share": 1.0,
+        "intent_margin": 1.0,
+        "source": "rules",
+        "missing": [],
+        "reason": "out_of_scope",
+        "question": "Какая погода в Сочи на выходных?",
+        "needs_clarification": true,
+        "clarification_reason": "out_of_scope",
+        "low_forecast_confidence": false
+      },
+      "confidence": 0.3,
+      "text": "Вопрос вне области складского помощника. Я отвечаю на вопросы о закупках, остатках, рисках дефицита и списания, бюджете и ценах."
+    }
+  ]
+}

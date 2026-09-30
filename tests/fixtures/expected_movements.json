@@ -1,0 +1,18 @@
+{
+  "M1": {"date": "2026-03-05", "sku": "OIL-001", "location": "MS-01", "operation": "receipt",
+         "qty": 10.0, "unit": "л", "batch": null, "doc_no": "НК-345"},
+  "M2": {"date": "2026-03-01", "sku": "OIL-001", "location": "MS-01", "operation": "consume",
+         "qty": 0.45, "unit": "л", "batch": "B-OIL-001-012", "doc_no": null},
+  "M3": {"date": "2026-03-06", "sku": "SCRB-020", "location": "Сочи", "operation": "writeoff",
+         "qty": 1.2, "unit": "кг", "batch": null, "doc_no": null},
+  "M4": {"date": "2026-03-07", "sku": "WRAP-030", "location": "MS-02", "operation": "consume",
+         "qty": 3.5, "unit": "кг", "batch": "B-WRAP-030-004", "doc_no": null},
+  "M5": {"date": "2026-03-12", "sku": "OIL-002", "location": null, "operation": "return",
+         "qty": 2.0, "unit": "л", "batch": null, "doc_no": null},
+  "M6": {"date": "2026-03-08", "sku": "CONS-051", "location": "MS-01", "operation": "consume",
+         "qty": 48.0, "unit": "пар", "batch": null, "doc_no": null},
+  "M7": {"date": "2026-03-15", "sku": "CONS-052", "location": "MS-02", "operation": "correction",
+         "qty": -120.0, "unit": "шт", "batch": null, "doc_no": null},
+  "M8": {"date": null, "sku": "CONS-051", "location": "Красная Поляна", "operation": "receipt",
+         "qty": 200.0, "unit": "пар", "batch": null, "doc_no": null}
+}
